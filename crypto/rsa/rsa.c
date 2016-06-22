@@ -143,28 +143,6 @@ err:
   return ret;
 }
 
-void RSA_free(RSA *rsa) {
-  if (rsa == NULL) {
-    return;
-  }
-
-  BN_free(rsa->n);
-  BN_free(rsa->e);
-  BN_free(rsa->d);
-  BN_free(rsa->p);
-  BN_free(rsa->q);
-  BN_free(rsa->dmp1);
-  BN_free(rsa->dmq1);
-  BN_free(rsa->iqmp);
-  BN_MONT_CTX_free(rsa->mont_n);
-  BN_MONT_CTX_free(rsa->mont_p);
-  BN_MONT_CTX_free(rsa->mont_q);
-  BN_MONT_CTX_free(rsa->mont_qq);
-  BN_free(rsa->qmn_mont);
-  BN_free(rsa->iqmp_mont);
-  OPENSSL_free(rsa);
-}
-
 int RSA_check_key(const RSA *key, BN_CTX *ctx) {
   assert(ctx);
 
